@@ -1,145 +1,133 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform, type Variants } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
-const container: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.18, delayChildren: 0.4 },
-  },
-};
+// ── timing constants ───────────────────────────────────────────────────────
+const CHAR_EN = 0.045; // seconds per English char
+const CHAR_KO = 0.035; // seconds per Korean char
+const START   = 0.2;   // initial delay before first char
+const GAP     = 0.2;   // pause between lines
 
-const line: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 1.1, ease: [0.25, 0.46, 0.45, 0.94] },
-  },
-};
+const L1  = "Little things.";
+const L2  = "Memorable";
+const L3  = "moments.";
+const KO1 = "일상 속 작은 행복을 만드는";
+const KO2 = " 굿즈 브랜드, Trinkit.";
 
-const fade: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { duration: 1.2, ease: "easeOut" },
-  },
-};
+const t1    = START;
+const t2    = t1  + L1.length  * CHAR_EN + GAP;
+const t3    = t2  + L2.length  * CHAR_EN;           // no gap between L2→L3
+const t4    = t3  + L3.length  * CHAR_EN + GAP;
+const t5    = t4  + KO1.length * CHAR_KO;
+const tStar = t5  + KO2.length * CHAR_KO + 0.15;
+const tBand = tStar + 0.25;
+// ──────────────────────────────────────────────────────────────────────────
+
+function Typewriter({
+  text,
+  startDelay,
+  charDelay,
+}: {
+  text: string;
+  startDelay: number;
+  charDelay: number;
+}) {
+  return (
+    <>
+      {text.split("").map((char, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.001, delay: startDelay + i * charDelay, ease: "linear" }}
+        >
+          {char}
+        </motion.span>
+      ))}
+    </>
+  );
+}
 
 export default function Hero() {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  const reduceMotion = useReducedMotion();
 
   return (
-    <section
-      ref={ref}
-      className="relative h-screen bg-ivory overflow-hidden flex flex-col"
-    >
-      {/* Top accent line */}
-      <motion.div
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: 1 }}
-        transition={{ duration: 1.6, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.1 }}
-        className="absolute top-0 left-0 right-0 h-px bg-amber origin-left"
-      />
+    <section className="md:min-h-[calc(100vh-4rem)] bg-white flex flex-col">
 
-      {/* Parallax content wrapper */}
-      <motion.div
-        style={{ y, opacity }}
-        className="flex-1 flex flex-col justify-center px-8 md:px-16 lg:px-20 pt-24 pb-20"
-      >
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate="visible"
-          className="max-w-6xl"
+      {/* Content area */}
+      <div className="flex-1 flex flex-col px-6 md:px-12 lg:px-16 pt-10 md:pt-18 lg:pt-24">
+
+        {/* Headline */}
+        <h1
+          className="font-semibold leading-[0.88] text-black"
+          style={{ fontFamily: "var(--font-display)" }}
         >
-          {/* Eyebrow label */}
-          <motion.p
-            variants={fade}
-            className="font-sans text-[10px] tracking-[0.35em] uppercase text-stone mb-14"
-          >
-            Premium Lifestyle Goods
-          </motion.p>
-
-          {/* Main display headline */}
-          <h1 className="font-serif font-light leading-[0.88] text-charcoal">
+          <span className="block text-[clamp(3rem,8vw,10rem)] tracking-[-0.025em]">
+            {reduceMotion
+              ? L1
+              : <Typewriter text={L1} startDelay={t1} charDelay={CHAR_EN} />}
+          </span>
+          <span className="block text-[clamp(3rem,8vw,10rem)] tracking-[-0.025em]">
+            {reduceMotion
+              ? L2
+              : <Typewriter text={L2} startDelay={t2} charDelay={CHAR_EN} />}
+          </span>
+          <span className="block text-[clamp(3rem,8vw,10rem)] tracking-[-0.025em]">
+            {reduceMotion
+              ? L3
+              : <Typewriter text={L3} startDelay={t3} charDelay={CHAR_EN} />}
             <motion.span
-              variants={line}
-              className="block text-[clamp(4rem,11vw,11rem)] tracking-[-0.02em]"
+              className="text-yellow"
+              style={{ fontSize: "0.28em", verticalAlign: "super", marginLeft: "0.12em", display: "inline-block" }}
+              initial={{ opacity: 0, scale: 0.6 }}
+              animate={reduceMotion
+                ? { opacity: 1, scale: 1 }
+                : { opacity: [0, 1, 1], scale: [0.6, 1.2, 1] }}
+              transition={reduceMotion
+                ? { duration: 0 }
+                : { duration: 0.35, ease: "easeOut", delay: tStar, times: [0, 0.6, 1] }}
+              aria-hidden="true"
             >
-              Little things.
+              ✳
             </motion.span>
-            <motion.span
-              variants={line}
-              className="block text-[clamp(4rem,11vw,11rem)] tracking-[-0.02em] italic text-charcoal/90"
-            >
-              Memorable
-            </motion.span>
-            <motion.span
-              variants={line}
-              className="block text-[clamp(4rem,11vw,11rem)] tracking-[-0.02em]"
-            >
-              moments.
-            </motion.span>
-          </h1>
+          </span>
+        </h1>
 
-          {/* Korean subtitle */}
-          <motion.p
-            variants={line}
-            className="font-sans font-light text-sm md:text-base text-stone mt-10 mb-14 tracking-wide"
-          >
-            일상의 작은 행복을 더하는 굿즈
-          </motion.p>
+        {/* Korean sub-copy */}
+        <p className="mt-8 md:mt-11 font-sans text-base md:text-lg text-black/50 leading-relaxed tracking-tight">
+          {reduceMotion ? (
+            <>일상 속 작은 행복을 만드는<br className="sm:hidden" />{" "}굿즈 브랜드, Trinkit.</>
+          ) : (
+            <>
+              <Typewriter text={KO1} startDelay={t4} charDelay={CHAR_KO} />
+              <br className="sm:hidden" />
+              <Typewriter text={KO2} startDelay={t5} charDelay={CHAR_KO} />
+            </>
+          )}
+        </p>
 
-          {/* CTA */}
-          <motion.div variants={line}>
-            <a
-              href="#collection"
-              className="group inline-flex items-center gap-5 font-sans text-[10px] tracking-[0.25em] uppercase text-charcoal"
-            >
-              <span>Explore the Collection</span>
-              <span className="h-px bg-charcoal w-10 group-hover:w-20 transition-all duration-600 ease-out" />
-            </a>
-          </motion.div>
-        </motion.div>
-      </motion.div>
+        {/* Spacer: fixed on mobile, flex-grow on desktop */}
+        <div className="h-12 md:flex-1 md:min-h-[48px]" />
+      </div>
 
-      {/* Faint watermark */}
+      {/* Yellow band — full-width, anchors the first screen */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.8, duration: 1.5 }}
-        className="absolute bottom-8 right-8 md:right-16 lg:right-20 pointer-events-none select-none"
+        transition={{ duration: 0.5, ease: "easeOut", delay: reduceMotion ? 0.5 : tBand }}
+        className="bg-yellow px-6 md:px-12 lg:px-16 py-4 md:py-5 flex items-center justify-between gap-4"
       >
-        <span className="font-serif font-light text-[clamp(5rem,12vw,12rem)] leading-none text-charcoal/[0.035] tracking-widest">
-          trinket
+        <span className="font-sans text-[9px] md:text-[10px] tracking-[0.12em] md:tracking-[0.25em] uppercase text-black/70 font-medium whitespace-nowrap">
+          trinkit no.01 — coming soon
         </span>
+        <a
+          href="#product"
+          className="hidden md:block shrink-0 font-sans text-[10px] tracking-[0.22em] uppercase text-black/60 hover:text-black transition-colors duration-200"
+        >
+          See what&apos;s coming ↓
+        </a>
       </motion.div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.2, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
-      >
-        <span className="font-sans text-[9px] tracking-[0.3em] uppercase text-stone/50">
-          Scroll
-        </span>
-        <motion.div
-          className="w-px h-8 bg-stone/30 origin-top"
-          animate={{ scaleY: [1, 1.6, 1] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </motion.div>
     </section>
   );
 }

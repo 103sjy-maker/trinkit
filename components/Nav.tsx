@@ -1,56 +1,40 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-
-const links = ["About", "Collection", "Story", "Contact"];
+import Logo from "@/components/Logo";
 
 export default function Nav() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <motion.nav
-      initial={{ opacity: 0, y: -16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 md:px-16 lg:px-20 py-6 transition-all duration-700 ${
-        scrolled
-          ? "bg-ivory/90 backdrop-blur-lg border-b border-charcoal/[0.06]"
-          : "bg-transparent"
-      }`}
+    <motion.header
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="fixed top-0 left-0 right-0 z-50 h-16 bg-white border-b border-black/[0.07] flex items-center justify-between px-6 md:px-12 lg:px-16"
     >
-      <Link
-        href="/"
-        className="font-serif text-xl font-light tracking-[0.25em] text-charcoal hover:text-stone transition-colors duration-500"
-      >
-        trinket
+      <Link href="/" aria-label="trinkit">
+        <Logo width={110} />
       </Link>
 
-      <div className="hidden md:flex items-center gap-10">
-        {links.map((item) => (
-          <Link
-            key={item}
-            href={`#${item.toLowerCase()}`}
-            className="group relative font-sans text-[10px] tracking-[0.2em] uppercase text-stone hover:text-charcoal transition-colors duration-400"
-          >
-            {item}
-            <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-amber group-hover:w-full transition-all duration-500 ease-out" />
-          </Link>
-        ))}
-      </div>
+      <div className="flex items-center gap-3 md:gap-7">
+        {/* Hidden on mobile — not enough space at 375px */}
+        <a
+          href="https://instagram.com/trinkit"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden md:block font-sans text-[10px] tracking-[0.2em] uppercase text-black/50 hover:text-black transition-colors duration-200"
+        >
+          Instagram
+        </a>
 
-      {/* Mobile menu icon */}
-      <button className="md:hidden flex flex-col gap-1.5 p-1" aria-label="Menu">
-        <span className="w-5 h-px bg-charcoal block" />
-        <span className="w-3 h-px bg-charcoal block" />
-      </button>
-    </motion.nav>
+        {/* Coming soon badge — whitespace-nowrap prevents wrapping */}
+        <span className="inline-flex items-center gap-1.5 bg-yellow px-2.5 py-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-black/50 shrink-0" />
+          <span className="font-sans text-[9px] md:text-[10px] tracking-[0.12em] md:tracking-[0.18em] uppercase text-black font-medium whitespace-nowrap">
+            Coming Soon
+          </span>
+        </span>
+      </div>
+    </motion.header>
   );
 }

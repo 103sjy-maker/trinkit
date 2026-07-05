@@ -1,17 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ivory: #F7F4EF;
-  --color-charcoal: #1C1916;
-  --color-amber: #C9A96E;
-  --color-amber-light: #E8D5B0;
-  --color-stone: #9B9590;
-  --color-cream: #EDE9E2;
+  /* Only one custom color. White and black come from Tailwind defaults. */
+  --color-yellow: #ffce21;
 }
 
 @theme inline {
+  --font-display: var(--font-display);
+  --font-serif: var(--font-display);
   --font-sans: var(--font-inter);
-  --font-serif: var(--font-cormorant);
 }
 
 html {
@@ -19,18 +16,13 @@ html {
 }
 
 body {
-  background-color: #F7F4EF;
-  color: #1C1916;
+  background-color: #ffffff;
+  color: #000000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background-color: #C9A96E;
-  color: #1C1916;
-}
-
-@keyframes scroll-pulse {
-  0%, 100% { opacity: 0.3; transform: scaleY(1); }
-  50% { opacity: 0.7; transform: scaleY(1.5); }
+  background-color: #ffce21;
+  color: #000000;
 }
