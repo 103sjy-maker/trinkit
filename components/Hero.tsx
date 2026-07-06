@@ -144,7 +144,7 @@ export default function Hero() {
         {/* ── Text ─────────────────────────────────────────────── */}
         <div className="relative z-10 text-center">
           <h1
-            className="font-sans font-semibold leading-[0.9] text-black
+            className="font-sans font-semibold leading-[1.0] md:leading-[0.9] text-black
                        text-[clamp(2rem,5.5vw,6.5rem)] tracking-[-0.025em]"
           >
             <span className="block">
