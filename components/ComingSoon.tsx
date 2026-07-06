@@ -15,9 +15,8 @@ export default function ComingSoon() {
         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
       >
 
-        {/* Star accent + label */}
-        <div className="flex items-center gap-2.5 mb-10 md:mb-14">
-          <span className="text-yellow text-lg leading-none select-none" aria-hidden="true">✳</span>
+        {/* Label */}
+        <div className="mb-10 md:mb-14">
           <span className="font-sans text-[10px] tracking-[0.3em] uppercase text-black/35">
             First Trinkit
           </span>
