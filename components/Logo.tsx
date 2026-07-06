@@ -5,12 +5,12 @@ interface LogoProps {
   className?: string;
 }
 
-// New logo viewBox: 2143.11 x 429.31 → ratio ≈ 4.992 : 1
+// trinkit-logo.svg viewBox: 203.47 × 44.89 → ratio ≈ 4.532 : 1
 export default function Logo({ width = 120, className = "" }: LogoProps) {
-  const height = Math.round(width / 4.992);
+  const height = Math.round(width / 4.532);
   return (
     <Image
-      src="/logo.svg"
+      src="/trinkit-logo.svg"
       alt="trinkit"
       width={width}
       height={height}
