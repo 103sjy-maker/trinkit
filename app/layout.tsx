@@ -1,34 +1,12 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-const sentinel = localFont({
-  src: [
-    {
-      path: "./fonts/Sentinel-Screen-Smart-Medium.woff2",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "./fonts/Sentinel-Screen-Smart-Semi-Bold.woff2",
-      weight: "600",
-      style: "normal",
-    },
-    {
-      path: "./fonts/Sentinel-Screen-Smart-Bold.woff2",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-display",
-  display: "swap",
-});
-
+// Inter — English copy, UI labels, buttons
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-  weight: ["300", "400", "500"],
+  weight: ["300", "400", "500", "600"],
   display: "swap",
 });
 
@@ -44,7 +22,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko" className={`${sentinel.variable} ${inter.variable}`}>
+    <html lang="ko" className={inter.variable}>
+      <head>
+        {/* Pretendard — Korean copy and body text */}
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+        />
+      </head>
       <body>{children}</body>
     </html>
   );

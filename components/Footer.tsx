@@ -24,7 +24,7 @@ export default function Footer() {
               height={24}
               className="w-[100px] md:w-[120px] mb-4"
             />
-            <p className="font-sans font-light text-sm text-black/40 max-w-xs leading-relaxed">
+            <p className="font-light text-sm text-black/40 max-w-xs leading-relaxed">
               작지만 오래 기억되는 순간을 만드는 브랜드
             </p>
           </div>

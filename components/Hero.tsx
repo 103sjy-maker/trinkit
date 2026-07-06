@@ -144,9 +144,8 @@ export default function Hero() {
         {/* ── Text ─────────────────────────────────────────────── */}
         <div className="relative z-10 text-center">
           <h1
-            className="font-semibold leading-[0.9] text-black
+            className="font-sans font-semibold leading-[0.9] text-black
                        text-[clamp(2rem,5.5vw,6.5rem)] tracking-[-0.025em]"
-            style={{ fontFamily: "var(--font-display)" }}
           >
             <span className="block">
               {reduceMotion ? L1 : <Typewriter text={L1} startDelay={T_L1} />}
@@ -164,7 +163,7 @@ export default function Hero() {
               ease: "easeOut",
               delay: reduceMotion ? 0.2 : T_KO,
             }}
-            className="mt-5 md:mt-6 font-sans text-sm md:text-base text-black/50 tracking-tight"
+            className="mt-5 md:mt-6 text-sm md:text-base text-black/50 tracking-tight leading-relaxed"
           >
             일상 속 작은 행복을 만드는 굿즈 브랜드
           </motion.p>

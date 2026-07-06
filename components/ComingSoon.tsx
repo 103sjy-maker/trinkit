@@ -25,14 +25,13 @@ export default function ComingSoon() {
 
         {/* Section heading */}
         <h2
-          className="font-semibold leading-[1] text-black mb-8 md:mb-10 text-[clamp(2rem,4.5vw,3.5rem)] tracking-[-0.01em]"
-          style={{ fontFamily: "var(--font-display)" }}
+          className="font-semibold leading-[1.1] text-black mb-8 md:mb-10 text-[clamp(2rem,4.5vw,3.5rem)] tracking-[-0.01em]"
         >
           첫 번째 트링킷은<br />곧 공개됩니다.
         </h2>
 
         {/* Supporting copy */}
-        <p className="font-sans font-light text-sm md:text-base text-black/45 leading-relaxed mb-10 md:mb-12 max-w-xs md:max-w-sm">
+        <p className="font-light text-sm md:text-base text-black/45 leading-relaxed mb-10 md:mb-12 max-w-xs md:max-w-sm">
           가장 먼저 보고 싶다면 인스타그램에서 만나요.
         </p>
 

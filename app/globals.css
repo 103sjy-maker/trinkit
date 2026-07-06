@@ -1,13 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  /* Only one custom color. White and black come from Tailwind defaults. */
+  /* Brand color */
   --color-yellow: #ffce21;
 }
 
 @theme inline {
-  --font-display: var(--font-display);
-  --font-serif: var(--font-display);
+  /* font-sans → Inter (via next/font CSS variable on <html>) */
   --font-sans: var(--font-inter);
 }
 
@@ -16,6 +15,10 @@ html {
 }
 
 body {
+  /* Pretendard as default body font for Korean readability.
+     Inter (via --font-inter) as fallback if CDN is unavailable. */
+  font-family: 'Pretendard Variable', Pretendard, var(--font-inter),
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background-color: #ffffff;
   color: #000000;
   -webkit-font-smoothing: antialiased;
