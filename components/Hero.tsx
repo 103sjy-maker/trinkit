@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 
 // ── Timing ────────────────────────────────────────────────────────────────
 const STAR_DELAY = 0.1;
-const STAR_DUR   = 1.0;                                  // star visible for 1s
+const STAR_DUR   = 1.2;                                  // star visible for 1.2s (slowed ~20%)
 const STAR_END   = STAR_DELAY + STAR_DUR;                // 1.1s
 
 const CHAR       = 0.048;
@@ -19,7 +19,7 @@ const T_BAND     = T_KO + 0.18;                         // 3.42s — band fade
 // 10 particles evenly around a circle, each flies 22px outward
 const PARTICLES = Array.from({ length: 10 }, (_, i) => {
   const rad = ((360 / 10) * i * Math.PI) / 180;
-  return { x: Math.cos(rad) * 22, y: Math.sin(rad) * 22 };
+  return { x: Math.cos(rad) * 30, y: Math.sin(rad) * 30 };
 });
 
 // Inline centering helper for absolutely positioned elements
@@ -62,15 +62,15 @@ export default function Hero() {
             <motion.div
               className="absolute rounded-full"
               style={{
-                width: 68,
-                height: 68,
+                width: 102,
+                height: 102,
                 border: "1.5px solid rgba(255, 205, 0, 0.75)",
-                ...centered(68, 68),
+                ...centered(102, 102),
               }}
               initial={{ opacity: 0, scale: 0.3 }}
               animate={{ opacity: [0, 0.55, 0], scale: [0.3, 1, 2.1] }}
               transition={{
-                duration: 0.62,
+                duration: 0.75,
                 delay: STAR_DELAY,
                 ease: "easeOut",
                 times: [0, 0.2, 1],
@@ -81,17 +81,17 @@ export default function Hero() {
             <motion.div
               className="absolute rounded-full"
               style={{
-                width: 88,
-                height: 88,
+                width: 132,
+                height: 132,
                 background:
                   "radial-gradient(circle, rgba(255,205,0,0.32) 0%, rgba(255,205,0,0) 70%)",
-                filter: "blur(8px)",
-                ...centered(88, 88),
+                filter: "blur(10px)",
+                ...centered(132, 132),
               }}
               initial={{ opacity: 0, scale: 0.4 }}
               animate={{ opacity: [0, 0.65, 0], scale: [0.4, 1, 0.7] }}
               transition={{
-                duration: 0.7,
+                duration: 0.85,
                 delay: STAR_DELAY,
                 ease: "easeOut",
                 times: [0, 0.25, 1],
@@ -103,7 +103,7 @@ export default function Hero() {
               <motion.div
                 key={i}
                 className="absolute rounded-full bg-yellow"
-                style={{ width: 4, height: 4, ...centered(4, 4) }}
+                style={{ width: 5, height: 5, ...centered(5, 5) }}
                 initial={{ opacity: 0, scale: 0, x: 0, y: 0 }}
                 animate={{
                   opacity: [0, 0.85, 0],
@@ -112,8 +112,8 @@ export default function Hero() {
                   y: p.y,
                 }}
                 transition={{
-                  duration: 0.6,
-                  delay: STAR_DELAY + 0.1,
+                  duration: 0.72,
+                  delay: STAR_DELAY + 0.12,
                   ease: "easeOut",
                   times: [0, 0.3, 1],
                 }}
@@ -125,7 +125,7 @@ export default function Hero() {
               src="/trinkit-star.svg"
               alt=""
               className="absolute"
-              style={{ width: 50, height: 50, ...centered(50, 50) }}
+              style={{ width: 75, height: 75, ...centered(75, 75) }}
               initial={{ opacity: 0, scale: 0.6 }}
               animate={{
                 opacity: [0,   1,   1,   0  ],
@@ -163,7 +163,7 @@ export default function Hero() {
               ease: "easeOut",
               delay: reduceMotion ? 0.2 : T_KO,
             }}
-            className="mt-5 md:mt-6 text-sm md:text-base text-black/50 tracking-tight leading-relaxed"
+            className="mt-6 md:mt-8 text-[clamp(1.2rem,2.8vw,2rem)] text-black/50 leading-snug"
           >
             일상의 작은 행복을 더하는 굿즈
           </motion.p>
