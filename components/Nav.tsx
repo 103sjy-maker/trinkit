@@ -19,7 +19,7 @@ export default function Nav() {
       <div className="flex items-center gap-3 md:gap-7">
         {/* Hidden on mobile — not enough space at 375px */}
         <a
-          href="https://instagram.com/trinkit"
+          href="https://www.instagram.com/trinkit.kr"
           target="_blank"
           rel="noopener noreferrer"
           className="hidden md:block font-sans text-[10px] tracking-[0.2em] uppercase text-black/50 hover:text-black transition-colors duration-200"
