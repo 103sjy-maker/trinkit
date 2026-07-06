@@ -165,7 +165,7 @@ export default function Hero() {
             }}
             className="mt-5 md:mt-6 text-sm md:text-base text-black/50 tracking-tight leading-relaxed"
           >
-            일상 속 작은 행복을 만드는 굿즈 브랜드
+            일상의 작은 행복을 더하는 굿즈
           </motion.p>
         </div>
       </div>

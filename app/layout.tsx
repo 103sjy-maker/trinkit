@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 
-// Inter — English copy, UI labels, buttons
-const inter = Inter({
+// Poppins — English copy, UI labels, buttons
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-poppins",
   weight: ["300", "400", "500", "600"],
   display: "swap",
 });
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko" className={inter.variable}>
+    <html lang="ko" className={poppins.variable}>
       <head>
         {/* Pretendard — Korean copy and body text */}
         <link
