@@ -18,10 +18,10 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
           <div>
             <Image
-              src="/logo.svg"
+              src="/trinkit-logo.svg"
               alt="trinkit"
               width={120}
-              height={24}
+              height={27}
               className="w-[100px] md:w-[120px] mb-4"
             />
             <p className="font-light text-sm text-black/40 max-w-xs leading-relaxed">
