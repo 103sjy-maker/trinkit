@@ -165,7 +165,7 @@ export default function Hero() {
             }}
             className="mt-4 md:mt-8 text-[0.95rem] md:text-[clamp(1.2rem,2.8vw,2rem)] text-black/50 leading-snug"
           >
-            일상의 작은 행복을 더하는 굿즈
+            일상 속 작은 행복을 만드는 굿즈
           </motion.p>
         </div>
       </div>

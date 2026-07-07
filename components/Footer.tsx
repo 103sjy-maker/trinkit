@@ -25,7 +25,7 @@ export default function Footer() {
               className="w-[100px] md:w-[120px] mb-4"
             />
             <p className="font-light text-sm text-black/40 max-w-xs leading-relaxed">
-              일상의 작은 행복을 더하는 굿즈
+              일상 속 작은 행복을 만드는 굿즈
             </p>
           </div>
 
