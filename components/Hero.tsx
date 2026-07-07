@@ -48,9 +48,9 @@ export default function Hero() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="min-h-[480px] md:min-h-[calc(100vh-4rem)] bg-white flex flex-col">
+    <section className="min-h-[calc(100dvh-4rem)] md:min-h-[calc(100vh-4rem)] bg-white flex flex-col">
 
-      <div className="flex-1 relative flex flex-col items-center justify-center px-6 py-16 md:py-0 overflow-hidden">
+      <div className="flex-1 relative flex flex-col items-center justify-center px-6 py-10 md:py-0 overflow-hidden">
 
         {/* ── Star intro: ring + glow + particles + star ───────── */}
         {!reduceMotion && (
@@ -144,8 +144,8 @@ export default function Hero() {
         {/* ── Text ─────────────────────────────────────────────── */}
         <div className="relative z-10 text-center">
           <h1
-            className="font-sans font-semibold leading-[1.0] md:leading-[0.9] text-black
-                       text-[clamp(2rem,5.5vw,6.5rem)] tracking-[-0.025em]"
+            className="font-sans font-semibold leading-[1.1] md:leading-[0.9] text-black
+                       text-[1.75rem] md:text-[clamp(2rem,5.5vw,6.5rem)] tracking-[-0.025em]"
           >
             <span className="block">
               {reduceMotion ? L1 : <Typewriter text={L1} startDelay={T_L1} />}
@@ -163,7 +163,7 @@ export default function Hero() {
               ease: "easeOut",
               delay: reduceMotion ? 0.2 : T_KO,
             }}
-            className="mt-6 md:mt-8 text-[clamp(1.2rem,2.8vw,2rem)] text-black/50 leading-snug"
+            className="mt-4 md:mt-8 text-[0.95rem] md:text-[clamp(1.2rem,2.8vw,2rem)] text-black/50 leading-snug"
           >
             일상의 작은 행복을 더하는 굿즈
           </motion.p>
