@@ -12,7 +12,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "trinkit — Little things. Memorable moments.",
-  description: "일상 속 작은 행복을 만드는 굿즈. Premium lifestyle goods designed for everyday beauty.",
+  description: "일상 속 작은 행복을 더하는 굿즈. Premium lifestyle goods designed for everyday beauty.",
   openGraph: {
     title: "trinkit",
     description: "Little things. Memorable moments.",
