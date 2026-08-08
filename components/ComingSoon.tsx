@@ -26,12 +26,12 @@ export default function ComingSoon() {
         <h2
           className="font-semibold leading-[1.1] text-black mb-8 md:mb-10 text-[clamp(2rem,4.5vw,3.5rem)] tracking-[-0.01em]"
         >
-          첫 번째 트링킷은<br />곧 공개됩니다.
+          첫 번째 트링킷은<br />소주잔입니다.
         </h2>
 
         {/* Supporting copy */}
         <p className="font-light text-sm md:text-base text-black/45 leading-relaxed mb-10 md:mb-12 max-w-xs md:max-w-sm">
-          가장 먼저 보고 싶다면 인스타그램에서 만나요.
+          차가운 술을 만나면 볼이 빨개지는<br />꿈돌이 꿈순이 소주잔을 곧 만나보세요.
         </p>
 
         {/* CTA */}
