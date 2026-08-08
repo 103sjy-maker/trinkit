@@ -18,13 +18,13 @@ export default function ComingSoon() {
       >
 
         {/* Image — left on desktop, top on mobile */}
-        <div className="w-full md:w-[55%] shrink-0">
+        <div className="w-full md:w-[55%] shrink-0 md:flex md:justify-center">
           <Image
             src="/image/first-trinkit-soju-glass.jpg"
             alt="첫 번째 트링킷 소주잔"
             width={900}
             height={900}
-            className="w-full h-auto object-contain"
+            className="w-full h-auto object-contain md:w-1/2"
             priority
           />
         </div>
