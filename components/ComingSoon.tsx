@@ -24,7 +24,7 @@ export default function ComingSoon() {
             alt="첫 번째 트링킷 소주잔"
             width={900}
             height={900}
-            className="w-full h-auto object-contain md:w-auto md:max-w-[220px]"
+            className="w-full h-auto object-contain md:w-auto md:max-w-[420px]"
             priority
           />
         </div>
