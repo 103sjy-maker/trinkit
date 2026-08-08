@@ -36,7 +36,7 @@ export default function ComingSoon() {
 
         {/* CTA */}
         <a
-          href="https://instagram.com/trinkit.kr"
+          href="https://www.instagram.com/trinkit.kr"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 border border-black px-5 py-3 font-sans text-[11px] tracking-[0.18em] uppercase text-black hover:bg-yellow hover:border-yellow transition-colors duration-200"

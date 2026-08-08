@@ -5,15 +5,15 @@ import { motion, useReducedMotion } from "framer-motion";
 // ── Timing ────────────────────────────────────────────────────────────────
 const STAR_DELAY = 0.1;
 const STAR_DUR   = 1.2;                                  // star visible for 1.2s (slowed ~20%)
-const STAR_END   = STAR_DELAY + STAR_DUR;                // 1.1s
+const STAR_END   = STAR_DELAY + STAR_DUR;                // 1.3s
 
 const CHAR       = 0.048;
 const L1         = "Little things.";
 const L2         = "Memorable moments.";
-const T_L1       = STAR_END + 0.15;                     // 1.25s — line 1 start
-const T_L2       = T_L1 + L1.length * CHAR + 0.18;     // 2.10s — line 2 start
-const T_KO       = T_L2 + L2.length * CHAR + 0.28;     // 3.24s — korean fade
-const T_BAND     = T_KO + 0.18;                         // 3.42s — band fade
+const T_L1       = STAR_END + 0.15;                     // 1.45s — line 1 start
+const T_L2       = T_L1 + L1.length * CHAR + 0.18;     // 2.30s — line 2 start
+const T_KO       = T_L2 + L2.length * CHAR + 0.28;     // 3.45s — korean fade
+const T_BAND     = T_KO + 0.18;                         // 3.63s — band fade
 // ──────────────────────────────────────────────────────────────────────────
 
 // 10 particles evenly around a circle, each flies 22px outward

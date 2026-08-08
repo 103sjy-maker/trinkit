@@ -16,7 +16,7 @@ html {
 
 body {
   /* Pretendard as default body font for Korean readability.
-     Inter (via --font-inter) as fallback if CDN is unavailable. */
+     Poppins (via --font-poppins) as fallback if CDN is unavailable. */
   font-family: 'Pretendard Variable', Pretendard, var(--font-poppins),
     -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background-color: #ffffff;

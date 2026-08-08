@@ -17,6 +17,8 @@ export const metadata: Metadata = {
     title: "trinkit",
     description: "Little things. Memorable moments.",
     type: "website",
+    url: "https://trinkit.kr",
+    siteName: "trinkit",
   },
 };
 
